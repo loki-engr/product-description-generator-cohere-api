@@ -1,12 +1,15 @@
-const express = require("express");
-const router = express.Router();
-const generator = require("../lib/description-generator");
+const express = require("express")
+const router = express.Router()
 
+const generator = require("../lib/description-generator")
 router.post("/", async (req, res) => {
-  const { product, keywords } = req.body;
-  const description = await generator({ product, keywords });
-  res.send(description.slice(0, -3));
-});
+  console.log(333);
+  console.log(req.headers);
+  console.log(req.body);
+  const {product, keywords} = req.body
+  console.log(product, keywords);
+  const description = await generator({product, keywords})
+  res.send(description.slice(0, -3))
+})
 
-//export this router to use in our index.js
-module.exports = router;
+module.exports = router
